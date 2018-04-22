@@ -1,0 +1,55 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300,400,700);
+#marketplace-view {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%; }
+
+#marketplace-view *, #marketplace-view *:before, #marketplace-view *:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  -o-box-sizing: inherit;
+  -ms-box-sizing: inherit;
+  box-sizing: inherit; }
+
+#marketplace-view {
+  font-family: "Roboto", sans-serif;
+  height: 100%;
+  max-width: 1200px;
+  padding: 0;
+  margin: 0;
+  background: #222433;
+  color: rgba(255, 255, 255, 0.8); }
+  #marketplace-view header {
+    color: white;
+    text-align: center;
+    font-size: 60px; }
+  #marketplace-view .signals-list {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 100px 0 40px; }
+    #marketplace-view .signals-list .signal-box {
+      position: relative;
+      flex: 0 0 30%;
+      background: #252a33;
+      margin-bottom: 80px; }
+      #marketplace-view .signals-list .signal-box .signal-head {
+        padding: 60px 30px 10px;
+        height: 100px; }
+        #marketplace-view .signals-list .signal-box .signal-head .signal-img {
+          position: absolute;
+          top: -20px;
+          left: calc(50% - 30px);
+          border-radius: 50%;
+          width: 60px;
+          height: 60px;
+          background: white; }
+        #marketplace-view .signals-list .signal-box .signal-head .signal-name {
+          text-align: center; }
+
+/*# sourceMappingURL=style.css.map */

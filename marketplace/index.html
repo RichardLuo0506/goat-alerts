@@ -8,10 +8,22 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body ng-app="APP" ng-controller="core as core" ng-cloak>
-   
+<body>
+    <div id="marketplace-view" ng-app="APP" ng-controller="core as vm" ng-cloak>
+        <header>Marketplace</header>
 
-
+        <div class="signals-list">
+            <div class="signal-box" ng-repeat="signal in vm.signals">
+                <div class="signal-head">
+                    <div class="signal-img" background-src="{{signal.imgUrl}}"></div>
+                    <div class="signal-name">{{signal.name}}</div>
+                </div>
+                <div class="signal-body">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
     </script>
     <!-- jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
