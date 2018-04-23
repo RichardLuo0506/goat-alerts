@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300,400,700);
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css);
 #marketplace-view {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -39,8 +40,10 @@
       background: #252a33;
       margin-bottom: 80px; }
       #marketplace-view .signals-list .signal-box .signal-head {
-        padding: 60px 30px 10px;
-        height: 100px; }
+        padding: 60px 30px 0;
+        height: 110px;
+        font-weight: 700;
+        font-size: 24px; }
         #marketplace-view .signals-list .signal-box .signal-head .signal-img {
           position: absolute;
           top: -20px;
@@ -51,5 +54,64 @@
           background: white; }
         #marketplace-view .signals-list .signal-box .signal-head .signal-name {
           text-align: center; }
+      #marketplace-view .signals-list .signal-box .signal-body {
+        position: relative;
+        padding: 30px; }
+        #marketplace-view .signals-list .signal-box .signal-body .signal-desc {
+          font-size: 16px;
+          line-height: 26px;
+          height: 78px;
+          display: -webkit-box;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+          margin-bottom: 20px;
+          font-weight: 300; }
+        #marketplace-view .signals-list .signal-box .signal-body .info-group {
+          line-height: 1.6; }
+          #marketplace-view .signals-list .signal-box .signal-body .info-group label {
+            color: #728693;
+            margin-right: 8px; }
+          #marketplace-view .signals-list .signal-box .signal-body .info-group .group-detail {
+            color: white; }
+        #marketplace-view .signals-list .signal-box .signal-body .signal-options {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          background: #dcdcdc;
+          opacity: 0;
+          transition: 300ms; }
+          #marketplace-view .signals-list .signal-box .signal-body .signal-options .option-btn {
+            width: 120px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            background: red;
+            margin: 10px 0;
+            transition: 300ms;
+            background: #232534; }
+            #marketplace-view .signals-list .signal-box .signal-body .signal-options .option-btn:hover {
+              background: #4ed887;
+              cursor: pointer; }
+      #marketplace-view .signals-list .signal-box .signal-body:hover .signal-options {
+        opacity: 1; }
+      #marketplace-view .signals-list .signal-box .social-links {
+        padding: 20px 0;
+        text-align: center; }
+        #marketplace-view .signals-list .signal-box .social-links .social-link {
+          color: black;
+          font-size: 30px;
+          transition: 500ms; }
+          #marketplace-view .signals-list .signal-box .social-links .social-link:hover {
+            color: white; }
+    #marketplace-view .signals-list .signal-box.active .signal-head {
+      background: #4fd788; }
 
 /*# sourceMappingURL=style.css.map */

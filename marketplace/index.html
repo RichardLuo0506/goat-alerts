@@ -13,13 +13,32 @@
         <header>Marketplace</header>
 
         <div class="signals-list">
-            <div class="signal-box" ng-repeat="signal in vm.signals">
+            <div class="signal-box" ng-repeat="signal in vm.signals" ng-class="{'active': signal.subscribed}">
                 <div class="signal-head">
-                    <div class="signal-img" background-src="{{signal.imgUrl}}"></div>
+                    <div class="signal-img" background-src="{{signal.imgURL}}"></div>
                     <div class="signal-name">{{signal.name}}</div>
                 </div>
                 <div class="signal-body">
-                    
+                    <div class="signal-desc">{{signal.description}}</div>
+                    <div class="info-group">
+                        <label>Price:</label>
+                        <span class="group-detail">${{signal.price}}</span>
+                    </div>
+                    <div class="info-group">
+                        <label>Signals Per Day:</label>
+                        <span class="group-detail">{{signal.signal_count}} /day</span>
+                    </div>
+                    <div class="info-group">
+                        <label>Profit %:</label>
+                        <span class="group-detail">{{signal.profit_pct}}</span>
+                    </div>
+                    <div class="signal-options">
+                        <div class="option-btn">More Details</div>
+                        <div class="option-btn">Subscribe</div>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <a href="{{signal.telegram}}" class="social-link telegram" ng-if="signal.telegram"><i class="fa fa-telegram"></i></a>
                 </div>
             </div>
         </div>
