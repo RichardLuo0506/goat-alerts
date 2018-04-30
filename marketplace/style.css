@@ -46,11 +46,12 @@
         font-size: 24px; }
         #marketplace-view .signals-list .signal-box .signal-head .signal-img {
           position: absolute;
-          top: -20px;
-          left: calc(50% - 30px);
+          top: -40px;
+          left: calc(50% - 40px);
+          border: 5px solid #232534;
           border-radius: 50%;
-          width: 60px;
-          height: 60px;
+          width: 80px;
+          height: 80px;
           background: white; }
         #marketplace-view .signals-list .signal-box .signal-head .signal-name {
           text-align: center; }
@@ -93,24 +94,33 @@
             height: 40px;
             line-height: 40px;
             text-align: center;
-            background: red;
             margin: 10px 0;
             transition: 300ms;
-            background: #232534; }
+            color: #232534;
+            border: 1px solid #232534;
+            border-radius: 2px;
+            text-decoration: none; }
             #marketplace-view .signals-list .signal-box .signal-body .signal-options .option-btn:hover {
-              background: #4ed887;
+              background: #232534;
+              color: white;
               cursor: pointer; }
+            #marketplace-view .signals-list .signal-box .signal-body .signal-options .option-btn.unsubscribe:hover {
+              background: #de2f2f;
+              border-color: #de2f2f; }
       #marketplace-view .signals-list .signal-box .signal-body:hover .signal-options {
         opacity: 1; }
       #marketplace-view .signals-list .signal-box .social-links {
-        padding: 20px 0;
-        text-align: center; }
+        padding: 20px 30px; }
         #marketplace-view .signals-list .signal-box .social-links .social-link {
-          color: black;
+          display: inline-block;
+          color: #dcdcdc;
           font-size: 30px;
-          transition: 500ms; }
+          transition: 300ms;
+          margin-right: 10px; }
           #marketplace-view .signals-list .signal-box .social-links .social-link:hover {
-            color: white; }
+            transform: scale(1.2); }
+          #marketplace-view .signals-list .signal-box .social-links .social-link.discord img {
+            width: 30px; }
     #marketplace-view .signals-list .signal-box.active .signal-head {
       background: #4fd788; }
 

@@ -33,12 +33,16 @@
                         <span class="group-detail">{{signal.profit_pct}}</span>
                     </div>
                     <div class="signal-options">
-                        <div class="option-btn">More Details</div>
-                        <div class="option-btn">Subscribe</div>
+                        <a class="option-btn" href="signal?id={{signal.id}}">More Details</a>
+                        <div class="option-btn" ng-hide="{{signal.subscribed}}">Subscribe</div>
+                        <div class="option-btn unsubscribe" ng-show="{{signal.subscribed}}">Unsubscribe</div>
                     </div>
                 </div>
                 <div class="social-links">
                     <a href="{{signal.telegram}}" class="social-link telegram" ng-if="signal.telegram"><i class="fa fa-telegram"></i></a>
+                    <a href="{{signal.facebook}}" class="social-link facebook" ng-if="signal.facebook"><i class="fa fa-facebook-square"></i></a>
+                    <a href="{{signal.youtube}}" class="social-link youtube" ng-if="signal.youtube"><i class="fa fa-youtube"></i></a>
+                    <a href="{{signal.discord}}" class="social-link discord" ng-if="signal.discord"><img src="https://i.imgur.com/Sfir8Gg.png" alt="" class="discord-img"></a>
                 </div>
             </div>
         </div>
@@ -47,9 +51,9 @@
     <!-- jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <!-- AngularJS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.9/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
     <!-- ngAnimate -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.9/angular-animate.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-animate.min.js"></script> -->
     <!-- Main App -->
     <script src="app.js"></script>
 </body>

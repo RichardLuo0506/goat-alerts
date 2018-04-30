@@ -1,0 +1,205 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300,400,700)
+
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css)
+
+@import url(https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.css)
+
+#signal-view
+	-webkit-box-sizing: border-box
+	-moz-box-sizing: border-box
+	-o-box-sizing: border-box
+	-ms-box-sizing: border-box
+	box-sizing: border-box
+	font-family: sans-serif
+	-webkit-text-size-adjust: 100%
+	-ms-text-size-adjust: 100%
+
+#signal-view *, #signal-view *:before, #signal-view *:after
+	-webkit-box-sizing: inherit
+	-moz-box-sizing: inherit
+	-o-box-sizing: inherit
+	-ms-box-sizing: inherit
+	box-sizing: inherit
+
+#signal-view
+	font-family: "Roboto", sans-serif
+	height: 100%
+	max-width: 1200px
+	padding: 0
+	margin: 0
+	background: #222433
+	color: rgba(255, 255, 255, 0.8)
+	display: flex
+
+	.left-column
+		flex: 0 0 300px
+
+		.signal-card
+			background: #272e47
+			border-radius: 3px
+			padding: 30px
+			display: flex
+			flex-direction: column
+			align-items: center
+
+			.signal-img
+				width: 100px
+				height: 100px
+				border-radius: 50%
+				border: 3px solid #494e66
+
+			.signal-name
+				font-size: 30px
+				margin: 30px 0
+
+			.signal-desc
+				font-weight: 300
+				line-height: 1.6
+				margin-bottom: 20px
+				font-size: 14px
+
+			.info-group
+				width: 100%
+				line-height: 1.6
+
+				label
+					color: #728693
+					margin-right: 8px
+
+				.group-detail
+					color: white
+
+			.social-links
+				margin-top: 40px
+				width: 100%
+
+				.social-link
+					display: inline-block
+					color: #dcdcdc
+					font-size: 30px
+					transition: 300ms
+					margin-right: 10px
+
+					&:hover
+						transform: scale(1.2)
+
+					&.discord img
+						width: 30px
+
+	.right-column
+		flex: 1
+
+		.general-stats-row
+			display: flex
+			justify-content: space-between
+
+			.general-stat-section
+				flex: 1
+				margin-left: 20px
+				padding: 20px
+				border-radius: 3px
+				background: #272e47
+
+				.stat-header
+					color: #afb1b7
+					font-size: 14px
+					margin-bottom: 10px
+
+				.stat-detail
+					color: white
+					font-size: 30px
+
+					&.green
+						color: #8bc34a
+
+					&.red
+						color: #f44336
+
+		.statistics
+			border-radius: 3px
+			background: #272e47
+			margin: 20px 0 0 20px
+
+			header
+				display: flex
+				justify-content: space-between
+				align-items: center
+				height: 56px
+				padding: 0 20px
+				color: #afb1b7
+				font-size: 14px
+
+				.ctrl
+					select
+						background: transparent
+						border: none
+						color: #afb1b7
+						font-size: 14px
+
+			.statistics-body
+				padding: 20px
+
+				.chart
+					width: 100%
+
+		.recent-signals
+			border-radius: 3px
+			background: #272e47
+			margin: 20px 0 0 20px
+
+			header
+				background: #2e3a5c
+				padding: 20px
+				color: #afb1b7
+				font-size: 14px
+
+			table
+				width: 100%
+				background: #353c53
+
+				th
+					padding: 10px 20px
+					text-align: left
+					font-weight: 400
+					font-size: 12px
+					background: #272e47
+					border: none
+
+					.sort-indicator:before
+						border-top: 4px solid #7b8298
+
+					.sort-indicator:after
+						border-bottom: 4px solid #7b8298
+
+					&.sort-desc
+						.sort-indicator:after
+							border-top: 4px solid white
+							border-bottom: none
+
+					&.sort-asc
+						.sort-indicator:after
+							border-top: none
+							border-bottom: 4px solid white
+
+				td
+					padding: 5px 20px
+					color: #7b8298
+					font-size: 12px
+					line-height: 1.6
+					border: none
+
+					&.green
+						color: #8bc34a
+
+					&.red
+						color: #f44336
+
+				tr
+					&:nth-child(odd)
+						background: #27314b
+
+					&:nth-child(even)
+						background: #272e47
+
+				[ng-table-pagination]
+					display: none

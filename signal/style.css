@@ -1,0 +1,162 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300,400,700);
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css);
+@import url(https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.css);
+#signal-view {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%; }
+
+#signal-view *, #signal-view *:before, #signal-view *:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  -o-box-sizing: inherit;
+  -ms-box-sizing: inherit;
+  box-sizing: inherit; }
+
+#signal-view {
+  font-family: "Roboto", sans-serif;
+  height: 100%;
+  max-width: 1200px;
+  padding: 0;
+  margin: 0;
+  background: #222433;
+  color: rgba(255, 255, 255, 0.8);
+  display: flex; }
+  #signal-view .left-column {
+    flex: 0 0 300px; }
+    #signal-view .left-column .signal-card {
+      background: #272e47;
+      border-radius: 3px;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center; }
+      #signal-view .left-column .signal-card .signal-img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        border: 3px solid #494e66; }
+      #signal-view .left-column .signal-card .signal-name {
+        font-size: 30px;
+        margin: 30px 0; }
+      #signal-view .left-column .signal-card .signal-desc {
+        font-weight: 300;
+        line-height: 1.6;
+        margin-bottom: 20px;
+        font-size: 14px; }
+      #signal-view .left-column .signal-card .info-group {
+        width: 100%;
+        line-height: 1.6; }
+        #signal-view .left-column .signal-card .info-group label {
+          color: #728693;
+          margin-right: 8px; }
+        #signal-view .left-column .signal-card .info-group .group-detail {
+          color: white; }
+      #signal-view .left-column .signal-card .social-links {
+        margin-top: 40px;
+        width: 100%; }
+        #signal-view .left-column .signal-card .social-links .social-link {
+          display: inline-block;
+          color: #dcdcdc;
+          font-size: 30px;
+          transition: 300ms;
+          margin-right: 10px; }
+          #signal-view .left-column .signal-card .social-links .social-link:hover {
+            transform: scale(1.2); }
+          #signal-view .left-column .signal-card .social-links .social-link.discord img {
+            width: 30px; }
+  #signal-view .right-column {
+    flex: 1; }
+    #signal-view .right-column .general-stats-row {
+      display: flex;
+      justify-content: space-between; }
+      #signal-view .right-column .general-stats-row .general-stat-section {
+        flex: 1;
+        margin-left: 20px;
+        padding: 20px;
+        border-radius: 3px;
+        background: #272e47; }
+        #signal-view .right-column .general-stats-row .general-stat-section .stat-header {
+          color: #afb1b7;
+          font-size: 14px;
+          margin-bottom: 10px; }
+        #signal-view .right-column .general-stats-row .general-stat-section .stat-detail {
+          color: white;
+          font-size: 30px; }
+          #signal-view .right-column .general-stats-row .general-stat-section .stat-detail.green {
+            color: #8bc34a; }
+          #signal-view .right-column .general-stats-row .general-stat-section .stat-detail.red {
+            color: #f44336; }
+    #signal-view .right-column .statistics {
+      border-radius: 3px;
+      background: #272e47;
+      margin: 20px 0 0 20px; }
+      #signal-view .right-column .statistics header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 56px;
+        padding: 0 20px;
+        color: #afb1b7;
+        font-size: 14px; }
+        #signal-view .right-column .statistics header .ctrl select {
+          background: transparent;
+          border: none;
+          color: #afb1b7;
+          font-size: 14px; }
+      #signal-view .right-column .statistics .statistics-body {
+        padding: 20px; }
+        #signal-view .right-column .statistics .statistics-body .chart {
+          width: 100%; }
+    #signal-view .right-column .recent-signals {
+      border-radius: 3px;
+      background: #272e47;
+      margin: 20px 0 0 20px; }
+      #signal-view .right-column .recent-signals header {
+        background: #2e3a5c;
+        padding: 20px;
+        color: #afb1b7;
+        font-size: 14px; }
+      #signal-view .right-column .recent-signals table {
+        width: 100%;
+        background: #353c53; }
+        #signal-view .right-column .recent-signals table th {
+          padding: 10px 20px;
+          text-align: left;
+          font-weight: 400;
+          font-size: 12px;
+          background: #272e47;
+          border: none; }
+          #signal-view .right-column .recent-signals table th .sort-indicator:before {
+            border-top: 4px solid #7b8298; }
+          #signal-view .right-column .recent-signals table th .sort-indicator:after {
+            border-bottom: 4px solid #7b8298; }
+          #signal-view .right-column .recent-signals table th.sort-desc .sort-indicator:after {
+            border-top: 4px solid white;
+            border-bottom: none; }
+          #signal-view .right-column .recent-signals table th.sort-asc .sort-indicator:after {
+            border-top: none;
+            border-bottom: 4px solid white; }
+        #signal-view .right-column .recent-signals table td {
+          padding: 5px 20px;
+          color: #7b8298;
+          font-size: 12px;
+          line-height: 1.6;
+          border: none; }
+          #signal-view .right-column .recent-signals table td.green {
+            color: #8bc34a; }
+          #signal-view .right-column .recent-signals table td.red {
+            color: #f44336; }
+        #signal-view .right-column .recent-signals table tr:nth-child(odd) {
+          background: #27314b; }
+        #signal-view .right-column .recent-signals table tr:nth-child(even) {
+          background: #272e47; }
+        #signal-view .right-column .recent-signals table [ng-table-pagination] {
+          display: none; }
+
+/*# sourceMappingURL=style.css.map */

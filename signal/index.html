@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="signal-view" ng-app="APP" ng-controller="core as vm" ng-cloak>
+        <div class="left-column">
+            <div class="signal-card">
+                <div class="signal-img" background-src="{{vm.signal.imgURL}}"></div>
+                <header class="signal-name">{{vm.signal.name}}</header>
+                <div class="signal-desc">{{vm.signal.description}}</div>
+                <div class="info-group">
+                    <label>Price:</label>
+                    <span class="group-detail">${{vm.signal.price}}</span>
+                </div>
+                <div class="social-links">
+                    <a href="{{vm.signal.telegram}}" class="social-link telegram" ng-if="vm.signal.telegram"><i class="fa fa-telegram"></i></a>
+                    <a href="{{vm.signal.facebook}}" class="social-link facebook" ng-if="vm.signal.facebook"><i class="fa fa-facebook-square"></i></a>
+                    <a href="{{vm.signal.youtube}}" class="social-link youtube" ng-if="vm.signal.youtube"><i class="fa fa-youtube"></i></a>
+                    <a href="{{vm.signal.discord}}" class="social-link discord" ng-if="vm.signal.discord"><img src="https://i.imgur.com/Sfir8Gg.png" alt="" class="discord-img"></a>
+                </div>
+            </div>
+        </div>
+        <div class="right-column">
+            <div class="general-stats-row">
+                <div class="general-stat-section">
+                    <div class="stat-header">Total Signals</div>
+                    <div class="stat-detail">{{vm.signal.signal_count | number}}</div>
+                </div>
+                <div class="general-stat-section">
+                    <div class="stat-header">Profit Percentage</div>
+                    <div class="stat-detail" ng-class="{'green': vm.signal.profit_pct > 0, 'red': vm.signal.profit_pct < 0}">{{vm.signal.profit_pct}}%</div>
+                </div>
+                <div class="general-stat-section">
+                    <div class="stat-header">Total Subscribers</div>
+                    <div class="stat-detail">{{vm.signal.subscriber_count | number}}</div>
+                </div>
+            </div>
+            <div class="statistics">
+                <header>
+                    <div class="text">Statistics</div>
+                    <div class="ctrl">
+                        <select ng-options="option.name for option in charts track by option.id" ng-model="selectedChart" ng-change="vm.changeChart()"></select>
+                    </div>
+                </header>
+                <div class="statistics-body">
+                    <canvas id="line" class="chart chart-line" chart-data="data" chart-labels="labels" chart-series="series" chart-options="options" chart-dataset-override="datasetOverride" chart-click="onClick" chart-colors="chartColors">
+                    </canvas>
+                </div>
+            </div>
+            <div class="recent-signals">
+                <header>Recent Signals</header>
+                <table ng-table="vm.tableParams" class="table">
+                    <tr ng-repeat="row in $data">
+                        <td data-title="'Coin'" sortable="'coin'">{{row.coin}}</td>
+                        <td data-title="'Exchange'" sortable="'exchange'">{{row.exchange}}</td>
+                        <td data-title="'Base Currency'" sortable="'baseCurrency'">{{row.baseCurrency}}</td>
+                        <td data-title="'Date'" sortable="'date'">
+                            <div>{{row.date | date:'MM/dd/yyyy'}}</div>
+                            <div>{{row.date | date:'hh:mma'}}</div>
+                        </td>
+                        <td data-title="'High'" sortable="'high'" class="green">{{row.high}}%</td>
+                        <td data-title="'Low'" sortable="'low'" class="red">{{row.low}}%</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    </script>
+    <!-- lodash -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.10/lodash.core.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <!-- AngularJS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+    <!-- ngTable -->
+    <script src="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.js"></script>
+    <!-- Chart.js -->
+    <script src="/Chart.min.js"></script>
+    <!-- angular chart -->
+    <script src="/angular-chart.min.js"></script>
+    <!-- ngAnimate -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-animate.min.js"></script> -->
+    <!-- Main App -->
+    <script src="app.js"></script>
+</body>
+
+</html>

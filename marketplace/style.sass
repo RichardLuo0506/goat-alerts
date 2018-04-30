@@ -53,11 +53,12 @@
 
 				.signal-img
 					position: absolute
-					top: -20px
-					left: calc(50% - 30px)
+					top: -40px
+					left: calc(50% - 40px)
+					border: 5px solid #232534
 					border-radius: 50%
-					width: 60px
-					height: 60px
+					width: 80px
+					height: 80px
 					background: white
 
 				.signal-name
@@ -108,29 +109,40 @@
 						height: 40px
 						line-height: 40px
 						text-align: center
-						background: red
 						margin: 10px 0
 						transition: 300ms
-						background: #232534
+						color: #232534
+						border: 1px solid #232534
+						border-radius: 2px
+						text-decoration: none
 
 						&:hover
-							background: #4ed887
+							background: #232534
+							color: white
 							cursor: pointer
+
+						&.unsubscribe:hover
+							background: #de2f2f
+							border-color: #de2f2f
 
 			.signal-body:hover .signal-options
 				opacity: 1
 
 			.social-links
-				padding: 20px 0
-				text-align: center
+				padding: 20px 30px
 
 				.social-link
-					color: black
+					display: inline-block
+					color: #dcdcdc
 					font-size: 30px
-					transition: 500ms
+					transition: 300ms
+					margin-right: 10px
 
 					&:hover
-						color: white
+						transform: scale(1.2)
+
+					&.discord img
+						width: 30px
 
 		// subscribed state
 		.signal-box.active
