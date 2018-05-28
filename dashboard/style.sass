@@ -2,7 +2,9 @@
 
 @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css)
 
-#marketplace-view
+@import url(https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.css)
+
+#dashboard-view
 	-webkit-box-sizing: border-box
 	-moz-box-sizing: border-box
 	-o-box-sizing: border-box
@@ -12,14 +14,14 @@
 	-webkit-text-size-adjust: 100%
 	-ms-text-size-adjust: 100%
 
-#marketplace-view *, #marketplace-view *:before, #marketplace-view *:after
+#dashboard-view *, #dashboard-view *:before, #dashboard-view *:after
 	-webkit-box-sizing: inherit
 	-moz-box-sizing: inherit
 	-o-box-sizing: inherit
 	-ms-box-sizing: inherit
 	box-sizing: inherit
 
-#marketplace-view
+#dashboard-view
 	font-family: "Roboto", sans-serif
 	height: 100%
 	max-width: 1200px
@@ -27,129 +29,166 @@
 	margin: 0
 	background: #222433
 	color: rgba(255, 255, 255, 0.8)
+	display: flex
 
-	header
-		color: white
-		text-align: center
-		font-size: 60px
-
-	.signals-list
+	.card
+		background: #272e47
+		border-radius: 3px
+		padding: 30px
 		display: flex
-		justify-content: space-between
-		flex-wrap: wrap
-		padding: 100px 0 40px
+		flex-direction: column
 
-		.signal-box
+		.header
+			font-size: 14px
+			margin-bottom: 10px
+			font-weight: 700
+			letter-spacing: 1px
+
+		.credit-card
+			margin: 20px 0
+			padding-bottom: 63%
 			position: relative
-			flex: 0 0 30%
-			background: #252a33
-			margin-bottom: 80px
 
-			.signal-head
-				padding: 60px 30px 0
-				height: 110px
-				font-weight: 700
-				font-size: 24px
+			.inner
+				position: absolute
+				top: 0
+				right: 0
+				bottom: 0
+				left: 0
+				border-radius: 7px
+				background: white
+				color: white
 
-				.signal-img
+				.chip
+					width: 24px
 					position: absolute
-					top: -40px
-					left: calc(50% - 40px)
-					border: 5px solid #232534
-					border-radius: 50%
-					width: 80px
-					height: 80px
-					background: white
+					left: 20px
+					top: 50px
 
-				.signal-name
-					text-align: center
-
-			.signal-body
-				position: relative
-				padding: 30px
-
-				.signal-desc
-					font-size: 16px
-					line-height: 26px
-					height: 78px
-					display: -webkit-box
-					overflow: hidden
-					text-overflow: ellipsis
-					-webkit-line-clamp: 3
-					-webkit-box-orient: vertical
-					margin-bottom: 20px
-					font-weight: 300
-
-				.info-group
-					line-height: 1.6
-
-					label
-						color: #728693
-						margin-right: 8px
-
-					.group-detail
-						color: white
-
-				.signal-options
+				.number
+					position: absolute
+					top: 80px
+					padding: 0 20px
 					display: flex
-					flex-direction: column
-					justify-content: center
-					align-items: center
+					justify-content: space-between
+					width: 100%
+
+				.name
 					position: absolute
-					top: 0
-					right: 0
-					bottom: 0
-					left: 0
-					background: #dcdcdc
-					opacity: 0
-					transition: 300ms
+					bottom: 10px
+					left: 20px
+					letter-spacing: 1px
+					text-transform: uppercase
+					font-size: 10px
 
-					.option-btn
-						width: 120px
-						height: 40px
-						line-height: 40px
-						text-align: center
-						margin: 10px 0
-						transition: 300ms
-						color: #232534
-						border: 1px solid #232534
-						border-radius: 2px
-						text-decoration: none
+				.exp
+					position: absolute
+					bottom: 30px
+					left: 100px
+					font-size: 14px
 
-						&:hover
-							background: #232534
-							color: white
-							cursor: pointer
+				.visa-logo
+					position: absolute
+					width: 50px
+					bottom: 10px
+					right: 10px
 
-						&.unsubscribe:hover
-							background: #de2f2f
-							border-color: #de2f2f
+		.label
+			font-size: 14px
+			margin-bottom: 5px
+			color: #7b8298
 
-			.signal-body:hover .signal-options
-				opacity: 1
+	.left-column
+		flex: 0 0 300px
 
-			.social-links
-				padding: 20px 30px
+		.card
+			background: #272e47
+			border-radius: 3px
+			padding: 30px
+			display: flex
+			flex-direction: column
 
-				.social-link
-					display: inline-block
-					color: #dcdcdc
-					font-size: 30px
-					transition: 300ms
-					margin-right: 10px
+	.right-column
+		flex: 1
+
+		.data-table
+			border-radius: 3px
+			background: #272e47
+			margin: 0 0 20px 20px
+
+			header
+				background: #2e3a5c
+				padding: 20px
+				color: #afb1b7
+				font-size: 14px
+
+			table
+				width: 100%
+				background: #353c53
+
+				th
+					padding: 10px 20px
+					text-align: left
+					font-weight: 400
+					font-size: 12px
+					background: #272e47
+					border: none
+
+					.sort-indicator:before
+						border-top: 4px solid #7b8298
+
+					.sort-indicator:after
+						border-bottom: 4px solid #7b8298
+
+					&.sort-desc
+						.sort-indicator:after
+							border-top: 4px solid white
+							border-bottom: none
+
+					&.sort-asc
+						.sort-indicator:after
+							border-top: none
+							border-bottom: 4px solid white
+
+				td
+					padding: 5px 20px
+					color: #7b8298
+					font-size: 12px
+					line-height: 1.6
+					border: none
+
+					&.green
+						color: #8bc34a
+
+					&.red
+						color: #f44336
+
+				tr
+					&:nth-child(odd)
+						background: #27314b
+
+					&:nth-child(even)
+						background: #272e47
+
+				[ng-table-pagination]
+					display: none
+
+				.unsubscribe-icon
+					font-size: 20px
 
 					&:hover
-						transform: scale(1.2)
+						cursor: pointer
+						color: #f44336
 
-					&.discord img
-						width: 30px
+		.empty
+			padding: 20px
 
-		// subscribed state
-		.signal-box.active
-			.signal-head
-				background: #4fd788
+			a
+				color: #58adf3
+				text-decoration: none
 
-				.signal-name
+				&:hover
+					text-decoration: underline
 
 .modal-backdrop
 	position: fixed

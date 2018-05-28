@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body ng-app="APP" ng-controller="core as vm" >
+    <div id="dashboard-view" ng-cloak>
+        <div class="left-column">
+            <div class="card">
+                <div class="header">My Card</div>
+                <div class="credit-card">
+                    <div class="inner" background-src="https://i.imgur.com/8sMW2SG.jpg">
+                        <img src="https://i.imgur.com/6bG3F0R.png" class="chip">
+                        <img src="https://i.imgur.com/TkGQboE.png" class="visa-logo">
+                        <div class="number">
+                            <span>* * * *</span>
+                            <span>* * * *</span>
+                            <span>* * * *</span>
+                            <span style="letter-spacing: 2px;">{{vm.user.card.number}}</span>
+                        </div>
+                        <div class="exp">{{vm.user.card.exp}}</div>
+                        <div class="name">{{vm.user.name}}</div>
+                    </div>
+                </div>
+                <div class="label">Monthly Bill</div>
+                <div class="white" style="letter-spacing: 2px;">{{vm.user.monthly | currency}}</div>
+            </div>
+        </div>
+        <div class="right-column">
+        <div class="recent-activity data-table">
+                <header>Recent Activity</header>
+                <table ng-table="vm.activityTableParams" class="table">
+                    <tr ng-repeat="row in $data">
+                        <td data-title="'Date'" sortable="'date'">
+                            <div>{{row.date | date:'MM/dd/yyyy'}}</div>
+                            <div>{{row.date | date:'hh:mma'}}</div>
+                        </td>
+                        <td data-title="'Description'" sortable="'description'">{{row.description}}</td>
+                        <td data-title="'Type'" sortable="'type'">{{row.type}}</td>
+                        <td data-title="'Amount'" sortable="'amount'" class="green">{{row.amount | currency}}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="subscribed-signals data-table">
+                <header>Subscribed Signals</header>
+                <table ng-show="vm.user.signals.length" ng-table="vm.signalTableParams" class="table">
+                    <tr ng-repeat="row in $data">
+                        <td data-title="'Date Subscribed'" sortable="'dateSubscribed'">
+                            <div>{{row.dateSubscribed | date:'MM/dd/yyyy'}}</div>
+                            <div>{{row.dateSubscribed | date:'hh:mma'}}</div>
+                        </td>
+                        <td data-title="'Name'" sortable="'name'">{{row.name}}</td>
+                        <td data-title="'Price'" sortable="'price'" class="green">{{row.price | currency}}</td>
+                        <td data-title="'Profit %'" sortable="'profit_pct'" ng-class="{'green': row.profit_pct > 0, 'red': row.profit_pct < 0}">{{row.profit_pct}}%</td>
+                        <td data-title="'Signal Count'" sortable="'signal_count'">{{row.signal_count | number:0}}</td>
+                        <td data-title="'Subscribers'" sortable="'subscriber_count'">{{row.subscriber_count | number:0}}</td>
+                        <td data-title="''"><i class="fa fa-trash-o unsubscribe-icon" ng-click="vm.unsubscribe(row)"></i></td>
+                    </tr>
+                </table>
+                <div class="empty" ng-hide="vm.user.signals.length">You don't have any active subscriptions. Head over to the <a href="/marketplace">marketplace</a> to add some.</div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-backdrop" ng-show="vm.modalShown">
+        <div class="modal">
+            <div class="modal-header"><i class="modal-symbol fa fa-flag" ng-if="vm.modalAction === 'subscribe'"></i><i class="modal-symbol fa fa-trash-o" ng-if="vm.modalAction === 'unsubscribe'"></i>{{vm.modalAction}}<i class="modal-close fa fa-times" ng-click="vm.modalShown = false"></i></div>
+            <div class="modal-body">
+                <div class="description">
+                    <span ng-if="vm.modalAction === 'subscribe'">Subscribing to</span><span ng-if="vm.modalAction === 'unsubscribe'">Unsubscribing from</span> <span class="blue">{{vm.modalSignal.name}}</span>
+                </div>
+                <div class="compare-box">
+                    <div class="inner">
+                        <div class="compartment left">
+                            <div class="head">Current</div>
+                            <div class="text-row">
+                                <span class="label">Monthly bill:</span> {{vm.currentMonthlyBill | currency}}
+                            </div>
+                        </div>
+                        <div class="compartment right">
+                            <div class="head">Next Month</div>
+                            <div class="text-row">
+                                <span class="label">Monthly bill:</span> <span ng-class="{'green': vm.modalAction === 'subscribe', 'red': vm.modalAction === 'unsubscribe'}">{{vm.nextMonthlyBill | currency}}</span>
+                            </div>
+                            <div class="text-row" ng-if="vm.modalAction === 'subscribe'">
+                                One-time charge of <span class="green">{{vm.oneTimeCharge | currency}}</span> for the remainder of this month
+                            </div>
+                            <div class="text-row" ng-if="vm.modalAction === 'unsubscribe'">
+                                You can use this signal for the remainder of this month.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="disclaimer" ng-click="vm.agree = !vm.agree">
+                    <span class="checkbox" ng-class="{'checked': vm.agree}"></span>
+                    I understand this will change my next month's CC charge.
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="full-btn" ng-if="vm.modalAction === 'subscribe'" ng-disabled="!vm.agree">
+                    CHECKOUT
+                </button>
+                <button class="full-btn red" ng-if="vm.modalAction === 'unsubscribe'" ng-disabled="!vm.agree" ng-click="vm.confirmUnsubscribe()">
+                    CONFIRM
+                </button>
+            </div>
+        </div>
+    </div>
+    </script>
+    <!-- lodash -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.10/lodash.core.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <!-- AngularJS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+    <!-- ngTable -->
+    <script src="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.js"></script>
+    <!-- ngAnimate -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-animate.min.js"></script> -->
+    <!-- Main App -->
+    <script src="app.js"></script>
+</body>
+
+</html>

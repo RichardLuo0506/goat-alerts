@@ -8,10 +8,9 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
-    <div id="marketplace-view" ng-app="APP" ng-controller="core as vm" ng-cloak>
+<body ng-app="APP" ng-controller="core as vm">
+    <div id="marketplace-view" ng-cloak>
         <header>Marketplace</header>
-
         <div class="signals-list">
             <div class="signal-box" ng-repeat="signal in vm.signals" ng-class="{'active': signal.subscribed}">
                 <div class="signal-head">
@@ -34,8 +33,8 @@
                     </div>
                     <div class="signal-options">
                         <a class="option-btn" href="signal?id={{signal.id}}">More Details</a>
-                        <div class="option-btn" ng-hide="{{signal.subscribed}}">Subscribe</div>
-                        <div class="option-btn unsubscribe" ng-show="{{signal.subscribed}}">Unsubscribe</div>
+                        <div class="option-btn" ng-hide="{{signal.subscribed}}" ng-click="vm.subscribe(signal)">Subscribe</div>
+                        <div class="option-btn unsubscribe" ng-show="{{signal.subscribed}}" ng-click="vm.unsubscribe(signal)">Unsubscribe</div>
                     </div>
                 </div>
                 <div class="social-links">
@@ -47,6 +46,50 @@
             </div>
         </div>
     </div>
+    <div class="modal-backdrop" ng-show="vm.modalShown">
+        <div class="modal">
+            <div class="modal-header"><i class="modal-symbol fa fa-flag" ng-if="vm.modalAction === 'subscribe'"></i><i class="modal-symbol fa fa-trash-o" ng-if="vm.modalAction === 'unsubscribe'"></i>{{vm.modalAction}}<i class="modal-close fa fa-times" ng-click="vm.modalShown = false"></i></div>
+            <div class="modal-body">
+                <div class="description">
+                    <span ng-if="vm.modalAction === 'subscribe'">Subscribing to</span><span ng-if="vm.modalAction === 'unsubscribe'">Unsubscribing from</span> <span class="blue">{{vm.modalSignal.name}}</span>
+                </div>
+                <div class="compare-box">
+                    <div class="inner">
+                        <div class="compartment left">
+                            <div class="head">Current</div>
+                            <div class="text-row">
+                                <span class="label">Monthly bill:</span> {{vm.currentMonthlyBill | currency}}
+                            </div>
+                        </div>
+                        <div class="compartment right">
+                            <div class="head">Next Month</div>
+                            <div class="text-row">
+                                <span class="label">Monthly bill:</span> <span ng-class="{'green': vm.modalAction === 'subscribe', 'red': vm.modalAction === 'unsubscribe'}">{{vm.nextMonthlyBill | currency}}</span>
+                            </div>
+                            <div class="text-row" ng-if="vm.modalAction === 'subscribe'">
+                                One-time charge of <span class="green">{{vm.oneTimeCharge | currency}}</span> for the remainder of this month
+                            </div>
+                            <div class="text-row" ng-if="vm.modalAction === 'unsubscribe'">
+                                You can use this signal for the remainder of this month.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="disclaimer" ng-click="vm.agree = !vm.agree">
+                    <span class="checkbox" ng-class="{'checked': vm.agree}"></span>
+                    I understand this will change my next month's CC charge.
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="full-btn" ng-if="vm.modalAction === 'subscribe'" ng-disabled="!vm.agree">
+                    CHECKOUT
+                </button>
+                <button class="full-btn red" ng-if="vm.modalAction === 'unsubscribe'" ng-disabled="!vm.agree">
+                    CONFIRM
+                </button>
+            </div>
+        </div>
+    </div>
     </script>
     <!-- jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
@@ -54,6 +97,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
     <!-- ngAnimate -->
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-animate.min.js"></script> -->
+    <!-- Moment -->
+    <script src="https://momentjs.com/downloads/moment.min.js"></script>
+    <script src="https://momentjs.com/downloads/moment-timezone.min.js"></script>
     <!-- Main App -->
     <script src="app.js"></script>
 </body>

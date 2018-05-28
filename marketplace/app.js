@@ -220,6 +220,79 @@ function core() {
             ]
         }
     ];
+
+    vm.subscribe = subscribe;
+    vm.unsubscribe = unsubscribe;
+
+    function calculateOneTimeCharge(price) {
+        var utcMoment = moment.utc();
+        var month = utcMoment.format('M');
+        var daysInMonth = getDaysInMonth(month);
+        var date = utcMoment.format('D');
+        return (daysInMonth - date + 1) / daysInMonth * price;
+    }
+
+    function getDaysInMonth(month) {
+        var days = 30;
+        switch (parseInt(month)) {
+            case 1:
+                days = 31;
+                break;
+            case 2:
+                days = moment().isLeapYear() ? 29 : 28;
+                break;
+            case 3:
+                days = 31;
+                break;
+            case 4:
+                days = 30;
+                break;
+            case 5:
+                days = 31;
+                break;
+            case 6:
+                days = 30;
+                break;
+            case 7:
+                days = 31;
+                break;
+            case 8:
+                days = 31;
+                break;
+            case 9:
+                days = 30;
+                break;
+            case 10:
+                days = 31;
+                break;
+            case 11:
+                days = 30;
+                break;
+            case 12:
+                days = 31;
+
+        }
+        return days;
+    }
+
+    function subscribe(signal) {
+        vm.modalShown = true;
+        vm.modalAction = 'subscribe';
+        vm.agree = false;
+        vm.modalSignal = signal;
+        vm.currentMonthlyBill = 400;
+        vm.nextMonthlyBill = vm.currentMonthlyBill + vm.modalSignal.price;
+        vm.oneTimeCharge = calculateOneTimeCharge(vm.modalSignal.price);
+    }
+
+    function unsubscribe(signal) {
+        vm.modalShown = true;
+        vm.modalAction = 'unsubscribe';
+        vm.agree = false;
+        vm.modalSignal = signal;
+        vm.currentMonthlyBill = 400;
+        vm.nextMonthlyBill = vm.currentMonthlyBill - vm.modalSignal.price;
+    }
 }
 
 function backgroundSrc() {
