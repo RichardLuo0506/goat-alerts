@@ -1,0 +1,222 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300,400,700);
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css);
+@import url(https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.css);
+#administration-view {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%; }
+
+#administration-view *, #administration-view *:before, #administration-view *:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  -o-box-sizing: inherit;
+  -ms-box-sizing: inherit;
+  box-sizing: inherit; }
+
+#administration-view {
+  font-family: "Roboto", sans-serif;
+  height: 100%;
+  max-width: 1200px;
+  padding: 0;
+  margin: 0;
+  background: #222433;
+  color: rgba(255, 255, 255, 0.8);
+  display: flex; }
+  #administration-view .left-column {
+    display: flex;
+    flex: 0 0 200px;
+    background: #272e47;
+    border-radius: 3px;
+    flex-direction: column; }
+    #administration-view .left-column .nav-item {
+      padding: 15px 20px; }
+      #administration-view .left-column .nav-item:hover, #administration-view .left-column .nav-item.active {
+        cursor: pointer;
+        background: #58adf3; }
+      #administration-view .left-column .nav-item i {
+        margin-right: 10px; }
+  #administration-view .right-column {
+    flex: 1; }
+    #administration-view .right-column .context-view {
+      padding: 30px; }
+      #administration-view .right-column .context-view .tabs {
+        display: inline-flex;
+        border: 2px solid #58adf3;
+        border-radius: 3px;
+        overflow: hidden; }
+        #administration-view .right-column .context-view .tabs .tab {
+          padding: 10px 15px;
+          border-left: 2px solid #58adf3; }
+          #administration-view .right-column .context-view .tabs .tab:first-child {
+            border: none; }
+          #administration-view .right-column .context-view .tabs .tab:hover, #administration-view .right-column .context-view .tabs .tab.active {
+            cursor: pointer;
+            background: #58adf3; }
+      #administration-view .right-column .context-view .tab-view .data-table {
+        border-radius: 3px;
+        background: #272e47;
+        margin-top: 30px; }
+        #administration-view .right-column .context-view .tab-view .data-table header {
+          background: #2e3a5c;
+          padding: 20px;
+          color: #afb1b7;
+          font-size: 14px; }
+        #administration-view .right-column .context-view .tab-view .data-table table {
+          width: 100%;
+          background: #353c53; }
+          #administration-view .right-column .context-view .tab-view .data-table table th {
+            padding: 10px 20px;
+            text-align: left;
+            font-weight: 400;
+            font-size: 12px;
+            background: #272e47;
+            border: none; }
+            #administration-view .right-column .context-view .tab-view .data-table table th .sort-indicator:before {
+              border-top: 4px solid #7b8298; }
+            #administration-view .right-column .context-view .tab-view .data-table table th .sort-indicator:after {
+              border-bottom: 4px solid #7b8298; }
+            #administration-view .right-column .context-view .tab-view .data-table table th.sort-desc .sort-indicator:after {
+              border-top: 4px solid white;
+              border-bottom: none; }
+            #administration-view .right-column .context-view .tab-view .data-table table th.sort-asc .sort-indicator:after {
+              border-top: none;
+              border-bottom: 4px solid white; }
+          #administration-view .right-column .context-view .tab-view .data-table table td {
+            padding: 5px 20px;
+            color: #7b8298;
+            font-size: 12px;
+            line-height: 1.6;
+            border: none; }
+            #administration-view .right-column .context-view .tab-view .data-table table td.green {
+              color: #8bc34a; }
+            #administration-view .right-column .context-view .tab-view .data-table table td.red {
+              color: #f44336; }
+          #administration-view .right-column .context-view .tab-view .data-table table tr:nth-child(odd) {
+            background: #27314b; }
+          #administration-view .right-column .context-view .tab-view .data-table table tr:nth-child(even) {
+            background: #272e47; }
+          #administration-view .right-column .context-view .tab-view .data-table table [ng-table-pagination] {
+            display: none; }
+          #administration-view .right-column .context-view .tab-view .data-table table .unsubscribe-icon {
+            font-size: 20px; }
+            #administration-view .right-column .context-view .tab-view .data-table table .unsubscribe-icon:hover {
+              cursor: pointer;
+              color: #f44336; }
+      #administration-view .right-column .context-view .tab-view .empty {
+        padding: 20px; }
+        #administration-view .right-column .context-view .tab-view .empty a {
+          color: #58adf3;
+          text-decoration: none; }
+          #administration-view .right-column .context-view .tab-view .empty a:hover {
+            text-decoration: underline; }
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .modal-backdrop .modal {
+    display: flex;
+    flex-direction: column;
+    min-width: 600px;
+    background: #495b6a;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+    font-family: "Roboto", sans-serif;
+    color: #d8dfe4;
+    font-weight: 300;
+    overflow: hidden; }
+    .modal-backdrop .modal .modal-header {
+      font-size: 24px;
+      display: flex;
+      justify-content: space-between;
+      padding: 20px 30px;
+      border-bottom: 1px solid #647380;
+      text-transform: capitalize; }
+      .modal-backdrop .modal .modal-header i {
+        color: #94a4b2; }
+        .modal-backdrop .modal .modal-header i.modal-symbol {
+          color: #58adf3; }
+          .modal-backdrop .modal .modal-header i.modal-symbol.fa-trash-o {
+            color: #f44336; }
+        .modal-backdrop .modal .modal-header i.modal-close:hover {
+          cursor: pointer;
+          color: #f44336; }
+    .modal-backdrop .modal .modal-body {
+      flex: 1;
+      padding: 30px; }
+      .modal-backdrop .modal .modal-body .description {
+        margin-bottom: 30px; }
+        .modal-backdrop .modal .modal-body .description .blue {
+          color: #58adf3; }
+      .modal-backdrop .modal .modal-body .compare-box {
+        width: 100%;
+        border: 1px solid #647380;
+        border-radius: 2px;
+        margin-bottom: 20px; }
+        .modal-backdrop .modal .modal-body .compare-box .inner {
+          display: flex;
+          padding: 30px; }
+          .modal-backdrop .modal .modal-body .compare-box .inner .compartment {
+            flex: 1; }
+            .modal-backdrop .modal .modal-body .compare-box .inner .compartment.left {
+              padding-right: 30px; }
+            .modal-backdrop .modal .modal-body .compare-box .inner .compartment.right {
+              padding-left: 30px;
+              border-left: 1px solid #647380; }
+            .modal-backdrop .modal .modal-body .compare-box .inner .compartment .head {
+              text-align: center;
+              font-weight: 600;
+              margin-bottom: 30px; }
+            .modal-backdrop .modal .modal-body .compare-box .inner .compartment .text-row {
+              margin-bottom: 10px; }
+              .modal-backdrop .modal .modal-body .compare-box .inner .compartment .text-row .label {
+                font-weight: 600; }
+              .modal-backdrop .modal .modal-body .compare-box .inner .compartment .text-row .green {
+                color: #8bc34a; }
+              .modal-backdrop .modal .modal-body .compare-box .inner .compartment .text-row .red {
+                color: #f44336; }
+      .modal-backdrop .modal .modal-body .disclaimer {
+        cursor: pointer; }
+        .modal-backdrop .modal .modal-body .disclaimer .checkbox {
+          display: inline-block;
+          vertical-align: middle;
+          width: 15px;
+          height: 15px;
+          margin-right: 5px;
+          border-radius: 3px;
+          border: 2px solid #58adf3; }
+          .modal-backdrop .modal .modal-body .disclaimer .checkbox.checked {
+            background: #58adf3; }
+    .modal-backdrop .modal .modal-footer .full-btn {
+      padding: 20px 30px;
+      background: #58adf3;
+      font-weight: 600;
+      text-align: center;
+      letter-spacing: 2px;
+      cursor: pointer;
+      border: none;
+      color: white;
+      width: 100%;
+      font-size: 14px; }
+      .modal-backdrop .modal .modal-footer .full-btn.red {
+        background: #f44336; }
+      .modal-backdrop .modal .modal-footer .full-btn:active {
+        box-shadow: inset 0px 3px 3px rgba(0, 0, 0, 0.4); }
+      .modal-backdrop .modal .modal-footer .full-btn:focus {
+        outline: none; }
+      .modal-backdrop .modal .modal-footer .full-btn[disabled] {
+        background: #94a4b2; }
+
+/*# sourceMappingURL=style.css.map */

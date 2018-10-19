@@ -283,12 +283,6 @@ function core(NgTableParams, $scope) {
             }
         ];
 
-        var url = window.location.href;
-        var signalParams = getAllUrlParams(url);
-        var signalId = signalParams.id;
-        vm.signal = _.find(vm.signals, function(signal) { return signal.id == '3' });
-        // vm.signal = _.find(vm.signals, function(signal){return signal.id == signalId });
-
         initTables();
     }
 

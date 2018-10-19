@@ -1,0 +1,284 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300,400,700)
+
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css)
+
+@import url(https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.css)
+
+#administration-view
+	-webkit-box-sizing: border-box
+	-moz-box-sizing: border-box
+	-o-box-sizing: border-box
+	-ms-box-sizing: border-box
+	box-sizing: border-box
+	font-family: sans-serif
+	-webkit-text-size-adjust: 100%
+	-ms-text-size-adjust: 100%
+
+#administration-view *, #administration-view *:before, #administration-view *:after
+	-webkit-box-sizing: inherit
+	-moz-box-sizing: inherit
+	-o-box-sizing: inherit
+	-ms-box-sizing: inherit
+	box-sizing: inherit
+
+#administration-view
+	font-family: "Roboto", sans-serif
+	height: 100%
+	max-width: 1200px
+	padding: 0
+	margin: 0
+	background: #222433
+	color: rgba(255, 255, 255, 0.8)
+	display: flex
+
+	.left-column
+		display: flex
+		flex: 0 0 200px
+		background: #272e47
+		border-radius: 3px
+		flex-direction: column
+
+		.nav-item
+			padding: 15px 20px
+
+			&:hover, &.active
+				cursor: pointer
+				background: #58adf3
+
+			i
+				margin-right: 10px
+
+	.right-column
+		flex: 1
+
+		.context-view
+			padding: 30px
+
+			.tabs
+				display: inline-flex
+				border: 2px solid #58adf3
+				border-radius: 3px
+				overflow: hidden
+
+				.tab
+					padding: 10px 15px
+					border-left: 2px solid #58adf3
+
+					&:first-child
+						border: none
+
+					&:hover, &.active
+						cursor: pointer
+						background: #58adf3
+
+			.tab-view
+				.data-table
+					border-radius: 3px
+					background: #272e47
+					margin-top: 30px
+
+					header
+						background: #2e3a5c
+						padding: 20px
+						color: #afb1b7
+						font-size: 14px
+
+					table
+						width: 100%
+						background: #353c53
+
+						th
+							padding: 10px 20px
+							text-align: left
+							font-weight: 400
+							font-size: 12px
+							background: #272e47
+							border: none
+
+							.sort-indicator:before
+								border-top: 4px solid #7b8298
+
+							.sort-indicator:after
+								border-bottom: 4px solid #7b8298
+
+							&.sort-desc
+								.sort-indicator:after
+									border-top: 4px solid white
+									border-bottom: none
+
+							&.sort-asc
+								.sort-indicator:after
+									border-top: none
+									border-bottom: 4px solid white
+
+						td
+							padding: 5px 20px
+							color: #7b8298
+							font-size: 12px
+							line-height: 1.6
+							border: none
+
+							&.green
+								color: #8bc34a
+
+							&.red
+								color: #f44336
+
+						tr
+							&:nth-child(odd)
+								background: #27314b
+
+							&:nth-child(even)
+								background: #272e47
+
+						[ng-table-pagination]
+							display: none
+
+						.unsubscribe-icon
+							font-size: 20px
+
+							&:hover
+								cursor: pointer
+								color: #f44336
+
+				.empty
+					padding: 20px
+
+					a
+						color: #58adf3
+						text-decoration: none
+
+						&:hover
+							text-decoration: underline
+
+.modal-backdrop
+	position: fixed
+	top: 0
+	right: 0
+	bottom: 0
+	left: 0
+	z-index: 100
+	background: rgba(0, 0, 0, 0.4)
+	display: flex
+	justify-content: center
+	align-items: center
+
+	.modal
+		display: flex
+		flex-direction: column
+		min-width: 600px
+		background: #495b6a
+		border-radius: 5px
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.7)
+		font-family: "Roboto", sans-serif
+		color: #d8dfe4
+		font-weight: 300
+		overflow: hidden
+
+		.modal-header
+			font-size: 24px
+			display: flex
+			justify-content: space-between
+			padding: 20px 30px
+			border-bottom: 1px solid #647380
+			text-transform: capitalize
+
+			i
+				color: #94a4b2
+
+				&.modal-symbol
+					color: #58adf3
+
+					&.fa-trash-o
+						color: #f44336
+
+				&.modal-close:hover
+					cursor: pointer
+					color: #f44336
+
+		.modal-body
+			flex: 1
+			padding: 30px
+
+			.description
+				margin-bottom: 30px
+
+				.blue
+					color: #58adf3
+
+			.compare-box
+				width: 100%
+				border: 1px solid #647380
+				border-radius: 2px
+				margin-bottom: 20px
+
+				.inner
+					display: flex
+					padding: 30px
+
+					.compartment
+						flex: 1
+
+						&.left
+							padding-right: 30px
+
+						&.right
+							padding-left: 30px
+							border-left: 1px solid #647380
+
+						.head
+							text-align: center
+							font-weight: 600
+							margin-bottom: 30px
+
+						.text-row
+							margin-bottom: 10px
+
+							.label
+								font-weight: 600
+
+							.green
+								color: #8bc34a
+
+							.red
+								color: #f44336
+
+			.disclaimer
+				cursor: pointer
+
+				.checkbox
+					display: inline-block
+					vertical-align: middle
+					width: 15px
+					height: 15px
+					margin-right: 5px
+					border-radius: 3px
+					border: 2px solid #58adf3
+
+					&.checked
+						background: #58adf3
+
+		.modal-footer
+			.full-btn
+				padding: 20px 30px
+				background: #58adf3
+				font-weight: 600
+				text-align: center
+				letter-spacing: 2px
+				cursor: pointer
+				border: none
+				color: white
+				width: 100%
+				font-size: 14px
+
+				&.red
+					background: #f44336
+
+				&:active
+					box-shadow: inset 0px 3px 3px rgba(0, 0, 0, 0.4)
+
+				&:focus
+					outline: none
+
+				&[disabled]
+					background: #94a4b2
